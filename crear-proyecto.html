@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Crear Proyecto | ONE Elevate Digital</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <!-- Header -->
+  <header id="header" class="alt">
+    <div class="logo"><a href="index.html">ONE Elevate <span>by Pinha's Corp</span></a></div>
+    <a href="#menu">Menu</a>
+  </header>
+  <!-- Nav -->
+  <nav id="menu">
+    <ul class="links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="mantenimiento.html">Portafolio</a></li>
+      <li><a href="generic.html">Sobre nosotros</a></li>
+    </ul>
+  </nav>
+  <section class="wrapper style2">
+    <div class="inner">
+      <header class="align-center">
+        <h2>Cuéntanos sobre tu proyecto</h2>
+        <p>Completa el formulario y recibe una cotización personalizada</p>
+      </header>
+      <form method="post" action="#" class="contact-form">
+        <div class="fields">
+          <div class="field half">
+            <label for="nombre">Nombre completo</label>
+            <input type="text" name="nombre" id="nombre" placeholder="Ejemplo: Juan Pérez" style="color:rgba(0,0,0,0.5);" required>
+          </div>
+          <div class="field half">
+            <label for="email">Correo electrónico</label>
+            <input type="email" name="email" id="email" placeholder="Ejemplo: correo@dominio.com" style="color:rgba(0,0,0,0.5);" required>
+          </div>
+          <div class="field">
+            <label for="telefono">Teléfono de contacto</label>
+            <input type="tel" name="telefono" id="telefono" placeholder="Ejemplo: +52 123 456 7890" style="color:rgba(0,0,0,0.5);">
+          </div>
+          <div class="field">
+            <label for="tipo-proyecto">Tipo de proyecto</label>
+            <select name="tipo-proyecto" id="tipo-proyecto" style="color:rgba(0,0,0,0.5);">
+              <option value="" disabled selected>Selecciona una opción</option>
+              <option value="web-corporativa">Sitio web corporativo</option>
+              <option value="ecommerce">Tienda en línea (E-commerce)</option>
+              <option value="landing-page">Landing Page</option>
+              <option value="blog">Blog o portal de noticias</option>
+              <option value="portafolio">Portafolio profesional</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+          <div class="field" id="otro-proyecto-field" style="display:none;">
+            <label for="otro-proyecto">Describe tu idea</label>
+            <input type="text" name="otro-proyecto" id="otro-proyecto" placeholder="Cuéntanos brevemente tu idea o necesidad" style="color:rgba(0,0,0,0.5);">
+          </div>
+          <div class="field">
+            <label for="detalles">Detalles del proyecto</label>
+            <textarea name="detalles" id="detalles" rows="5" placeholder="Describe aquí los objetivos, funcionalidades deseadas, plazos, etc." style="color:rgba(0,0,0,0.5);"></textarea>
+          </div>
+        </div>
+        <ul class="actions align-center">
+          <li><input type="submit" value="Enviar solicitud" class="button alt"></li>
+        </ul>
+      </form>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="container">
+      <ul class="icons">
+        <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+        <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+        <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+        <li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+      </ul>
+    </div>
+  </footer>
+  <div class="copyright">
+    Made by <a href="index.html">ONE Elevate Digital</a>.
+  </div>
+  <!-- Scripts -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/jquery.scrollex.min.js"></script>
+  <script src="assets/js/skel.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Mostrar campo de texto si elige 'Otro'
+    document.addEventListener('DOMContentLoaded', function() {
+      var tipoProyecto = document.getElementById('tipo-proyecto');
+      var otroField = document.getElementById('otro-proyecto-field');
+      tipoProyecto.addEventListener('change', function() {
+        if (this.value === 'otro') {
+          otroField.style.display = 'block';
+        } else {
+          otroField.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html> 
