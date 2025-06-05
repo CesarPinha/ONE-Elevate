@@ -376,6 +376,128 @@ var settings = {
 
 			}
 
+		// --- AI Chat Floating Button & Widget ---
+		// Agregar el botón flotante y el widget de chat al body
+		const chatBtn = $('<button id="ai-float-btn" title="¿Necesitas ayuda?"><i class="fa fa-comments"></i></button>');
+		const chatWidget = $(`
+			<div id="ai-chat-widget">
+				<div id="ai-chat-header">
+					<span>Asistente AI</span>
+					<button id="ai-chat-close" title="Cerrar">&times;</button>
+				</div>
+				<div id="ai-chat-messages"></div>
+				<form id="ai-chat-input-area" autocomplete="off">
+					<input id="ai-chat-input" type="text" placeholder="Escribe tu mensaje..." autocomplete="off" />
+					<button id="ai-chat-send" type="submit"><i class="fa fa-paper-plane"></i></button>
+				</form>
+			</div>
+		`);
+		$('body').append(chatBtn, chatWidget);
+
+		// Mostrar/ocultar el chat
+		chatBtn.on('click', function() {
+			chatWidget.toggleClass('open');
+			if (chatWidget.hasClass('open')) {
+				$('#ai-chat-input').focus();
+			}
+		});
+		$('#ai-chat-close').on('click', function() {
+			chatWidget.removeClass('open');
+		});
+
+		// Mensaje de bienvenida y opciones iniciales
+		function aiWelcome() {
+			aiAddMessage('assistant', '¡Hola! Soy tu asistente AI de ONE Elevate Digital. ¿En qué puedo ayudarte hoy? Elige una opción o escribe tu pregunta:', [
+				'Ver servicios',
+				'Cotización personalizada',
+				'Hablar con un asesor',
+				'Consejos de AI para mi negocio'
+			]);
+		}
+
+		// Agregar mensaje al chat
+		function aiAddMessage(sender, text, options) {
+			const $msg = $('<div>').addClass('ai-msg').addClass(sender === 'user' ? 'ai-user' : 'ai-assistant');
+			$msg.append($('<div>').addClass('ai-msg-text').text(text));
+			if (options && Array.isArray(options)) {
+				const $opts = $('<div>').addClass('ai-msg-options');
+				options.forEach(opt => {
+					$('<button type="button" class="ai-msg-option">').text(opt).appendTo($opts);
+				});
+				$msg.append($opts);
+			}
+			$('#ai-chat-messages').append($msg);
+			$('#ai-chat-messages').scrollTop($('#ai-chat-messages')[0].scrollHeight);
+		}
+
+		// Analizar input del usuario y responder
+		function aiAnalyzeInput(input) {
+			input = input.trim().toLowerCase();
+			if (input.includes('servicio')) {
+				aiAddMessage('assistant', 'Ofrecemos diseño web, marketing digital, integración de AI y más. ¿Te gustaría saber más de algún servicio en particular?', [
+					'Diseño web', 'Marketing digital', 'Integración AI', 'Otro'
+				]);
+			} else if (input.includes('cotiz')) {
+				aiAddMessage('assistant', '¡Perfecto! ¿Qué tipo de proyecto te interesa cotizar?', [
+					'Sitio web', 'Tienda en línea', 'Automatización AI', 'Otro'
+				]);
+			} else if (input.includes('asesor')) {
+				aiAddMessage('assistant', 'Un asesor humano te contactará pronto. ¿Prefieres WhatsApp o Email?', [
+					'WhatsApp', 'Email'
+				]);
+			} else if (input.includes('ai') || input.includes('inteligencia')) {
+				aiAddMessage('assistant', 'La AI puede ayudarte a automatizar tareas, analizar datos y mejorar tus ventas. ¿Te gustaría una recomendación personalizada?', [
+					'Sí, por favor', 'No, gracias'
+				]);
+			} else if (input.length < 3) {
+				aiAddMessage('assistant', '¿Podrías darme más detalles o elegir una opción?');
+			} else {
+				aiAddMessage('assistant', 'Gracias por tu mensaje. Un asesor revisará tu consulta y te responderá pronto. ¿Deseas dejar tus datos de contacto?', [
+					'Sí', 'No'
+				]);
+			}
+		}
+
+		// Enviar mensaje
+		$('#ai-chat-input-area').on('submit', function(e) {
+			e.preventDefault();
+			const val = $('#ai-chat-input').val();
+			if (!val.trim()) return;
+			aiAddMessage('user', val);
+			$('#ai-chat-input').val('');
+			setTimeout(() => aiAnalyzeInput(val), 600);
+		});
+
+		// Click en opciones sugeridas
+		$(document).on('click', '.ai-msg-option', function() {
+			const val = $(this).text();
+			aiAddMessage('user', val);
+			setTimeout(() => aiAnalyzeInput(val), 600);
+			$('#ai-chat-input').val('');
+		});
+
+		// Estilos rápidos para mensajes
+		$('<style>').text(`
+			#ai-chat-messages { font-family: Poppins, sans-serif; }
+			.ai-msg { margin-bottom: 1rem; }
+			.ai-user .ai-msg-text { background: #8a4680; color: #fff; border-radius: 16px 16px 4px 16px; padding: 0.5rem 1rem; display: inline-block; float: right; }
+			.ai-assistant .ai-msg-text { background: #f1e6f3; color: #333; border-radius: 16px 16px 16px 4px; padding: 0.5rem 1rem; display: inline-block; float: left; }
+			.ai-msg-options { margin-top: 0.5rem; clear: both; }
+			.ai-msg-option { background: #fff; border: 1px solid #8a4680; color: #8a4680; border-radius: 8px; margin-right: 0.5rem; margin-bottom: 0.5rem; padding: 0.3rem 1rem; cursor: pointer; transition: background 0.2s, color 0.2s; }
+			.ai-msg-option:hover { background: #8a4680; color: #fff; }
+			.ai-msg:after { content: ''; display: block; clear: both; }
+		`).appendTo('head');
+
+		// Lanzar mensaje de bienvenida al abrir el chat por primera vez
+		let aiChatWelcomed = false;
+		chatBtn.on('click', function() {
+			if (!aiChatWelcomed) {
+				$('#ai-chat-messages').empty();
+				aiWelcome();
+				aiChatWelcomed = true;
+			}
+		});
+
 	});
 
 })(jQuery);
