@@ -4408,3 +4408,12 @@
 #ai-chat-send:hover {
   background: #9b4f90;
 }
+
+/* Ajustes para crear-proyecto.html */
+#form-step-3 .field.align-center {
+  margin-top: 2em;
+}
+#detalles {
+  min-height: 180px;
+  font-size: 1.15em;
+}

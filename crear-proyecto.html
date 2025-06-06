@@ -9,62 +9,129 @@
 </head>
 <body>
   <!-- Header -->
-  <header id="header" class="alt">
-    <div class="logo"><a href="index.html">ONE Elevate <span>by Pinha's Corp</span></a></div>
+  <header id="header" class="alt"><div class="logo"><a href="index.html">ONE Elevate <span>by Pinha's Corp</span></a></div>
     <a href="#menu">Menu</a>
   </header>
   <!-- Nav -->
-  <nav id="menu">
-    <ul class="links">
-      <li><a href="index.html">Home</a></li>
+  <nav id="menu"><ul class="links"><li><a href="index.html">Home</a></li>
       <li><a href="mantenimiento.html">Portafolio</a></li>
       <li><a href="generic.html">Sobre nosotros</a></li>
-    </ul>
-  </nav>
+    </ul></nav>
   <section class="wrapper style2">
     <div class="inner">
       <header class="align-center">
-        <h2>Cuéntanos sobre tu proyecto</h2>
+        <h2>Contáctanos en 3 sencillos pasos</h2>
         <p>Completa el formulario y recibe una cotización personalizada</p>
       </header>
-      <form method="post" action="#" class="contact-form">
-        <div class="fields">
-          <div class="field half">
-            <label for="nombre">Nombre completo</label>
-            <input type="text" name="nombre" id="nombre" placeholder="Ejemplo: Juan Pérez" style="color:rgba(0,0,0,0.5);" required>
-          </div>
-          <div class="field half">
-            <label for="email">Correo electrónico</label>
-            <input type="email" name="email" id="email" placeholder="Ejemplo: correo@dominio.com" style="color:rgba(0,0,0,0.5);" required>
-          </div>
-          <div class="field">
-            <label for="telefono">Teléfono de contacto</label>
-            <input type="tel" name="telefono" id="telefono" placeholder="Ejemplo: +52 123 456 7890" style="color:rgba(0,0,0,0.5);">
-          </div>
-          <div class="field">
-            <label for="tipo-proyecto">Tipo de proyecto</label>
-            <select name="tipo-proyecto" id="tipo-proyecto" style="color:rgba(0,0,0,0.5);">
-              <option value="" disabled selected>Selecciona una opción</option>
-              <option value="web-corporativa">Sitio web corporativo</option>
-              <option value="ecommerce">Tienda en línea (E-commerce)</option>
-              <option value="landing-page">Landing Page</option>
-              <option value="blog">Blog o portal de noticias</option>
-              <option value="portafolio">Portafolio profesional</option>
-              <option value="otro">Otro</option>
-            </select>
-          </div>
-          <div class="field" id="otro-proyecto-field" style="display:none;">
-            <label for="otro-proyecto">Describe tu idea</label>
-            <input type="text" name="otro-proyecto" id="otro-proyecto" placeholder="Cuéntanos brevemente tu idea o necesidad" style="color:rgba(0,0,0,0.5);">
-          </div>
-          <div class="field">
-            <label for="detalles">Detalles del proyecto</label>
-            <textarea name="detalles" id="detalles" rows="5" placeholder="Describe aquí los objetivos, funcionalidades deseadas, plazos, etc." style="color:rgba(0,0,0,0.5);"></textarea>
+      <form id="multi-step-form" class="contact-form">
+        <!-- Paso 1 -->
+        <div id="form-step-1" class="form-step">
+          <h3 class="align-center">¡Conectemos!</h3>
+          <div class="fields">
+            <div class="field">
+              <label for="nombre">Nombre</label>
+              <input type="text" name="nombre" id="nombre" placeholder="Ejemplo: Juan Pérez" style="color:rgba(0,0,0,0.5);" required>
+            </div>
+            <div class="field">
+              <label for="contacto">¿Cómo prefieres que te contactemos?</label>
+              <select name="contacto" id="contacto" style="color:rgba(0,0,0,0.5);" required>
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option value="email">Correo electrónico</option>
+                <option value="telefono">Teléfono de contacto</option>
+                <option value="ambos">Ambos</option>
+                <option value="whatsapp">WhatsApp</option>
+              </select>
+            </div>
+            <div class="field" id="field-email" style="display:none;">
+              <label for="email">Correo electrónico</label>
+              <input type="email" name="email" id="email" placeholder="Ejemplo: correo@dominio.com" style="color:rgba(0,0,0,0.5);">
+            </div>
+            <div class="field" id="field-telefono" style="display:none;">
+              <label for="telefono">Teléfono de contacto</label>
+              <input type="tel" name="telefono" id="telefono" placeholder="Ejemplo: +52 123 456 7890" style="color:rgba(0,0,0,0.5);">
+            </div>
+            <div class="field" id="field-whatsapp" style="display:none;">
+              <label for="whatsapp">WhatsApp</label>
+              <input type="tel" name="whatsapp" id="whatsapp" placeholder="Ejemplo: +52 123 456 7890" style="color:rgba(0,0,0,0.5);">
+            </div>
           </div>
         </div>
-        <ul class="actions align-center">
-          <li><input type="submit" value="Enviar solicitud" class="button alt"></li>
-        </ul>
+        <!-- Paso 2 -->
+        <div id="form-step-2" class="form-step" style="display:none;">
+          <h3 class="align-center">Cuéntanos tu idea</h3>
+          <div class="fields">
+            <div class="field">
+              <label for="detalles">Detalles del proyecto</label>
+              <textarea name="detalles" id="detalles" rows="4" placeholder="Describe aquí los objetivos, funcionalidades deseadas, plazos, etc." style="color:rgba(0,0,0,0.5);" required></textarea>
+            </div>
+            <div class="field">
+              <label for="tipo-proyecto">Tipo de proyecto</label>
+              <select name="tipo-proyecto" id="tipo-proyecto" style="color:rgba(0,0,0,0.5);" required>
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option value="web-corporativa">Sitio web corporativo</option>
+                <option value="ecommerce">Tienda en línea (E-commerce)</option>
+                <option value="landing-page">Landing Page</option>
+                <option value="blog">Blog o portal de noticias</option>
+                <option value="portafolio">Portafolio profesional</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+            <div class="field" id="otro-proyecto-field" style="display:none;">
+              <label for="otro-proyecto">Describe tu idea</label>
+              <input type="text" name="otro-proyecto" id="otro-proyecto" placeholder="Cuéntanos brevemente tu idea o necesidad" style="color:rgba(0,0,0,0.5);">
+            </div>
+            <div class="field">
+              <label for="plazo">Plazo estimado</label>
+              <select name="plazo" id="plazo" style="color:rgba(0,0,0,0.5);" required>
+                <option value="" disabled selected>Selecciona un plazo</option>
+                <option value="1-2 semanas">1-2 semanas</option>
+                <option value="1 mes">1 mes</option>
+                <option value="2-3 meses">2-3 meses</option>
+                <option value="flexible">Flexible</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="moneda">Presupuesto estimado</label>
+              <div style="display:flex;gap:1em;align-items:center;">
+                <select name="moneda" id="moneda" style="color:rgba(0,0,0,0.5);width:auto;" required>
+                  <option value="MXN">MXN</option>
+                  <option value="USD">USD</option>
+                </select>
+                <input type="number" name="presupuesto" id="presupuesto" min="0" placeholder="Cantidad" style="color:rgba(0,0,0,0.5);width:100%;" required>
+              </div>
+              <small style="color:rgba(0,0,0,0.4);">Tipo de cambio fijo: 1 USD = 20 MXN</small>
+            </div>
+            <div class="field">
+              <label for="referencias">Referencias (nombres de marcas, no URLs)</label>
+              <input type="text" name="referencias" id="referencias" pattern="^[^\s]*$|^[^\s]+( [^\s]+)*$" placeholder="Ejemplo: Coca-Cola, Nike, Apple" style="color:rgba(0,0,0,0.5);">
+            </div>
+          </div>
+        </div>
+        <!-- Paso 3 -->
+        <div id="form-step-3" class="form-step" style="display:none;">
+          <h3 class="align-center">¡Listo para comenzar!</h3>
+          <div class="fields">
+            <div class="field">
+              <div id="resumen-formulario" style="background:rgba(0,0,0,0.03);padding:1em;border-radius:8px;"></div>
+            </div>
+          </div>
+          <div class="field align-center">
+            <button type="submit" id="cta-btn" class="button alt">Solicitar cotización gratuita</button>
+          </div>
+          <p style="font-size:0.9em;color:rgba(0,0,0,0.5);margin-top:1em;">Tus datos serán tratados con total confidencialidad. Consulta nuestro <a href="#" style="color:#8a4680;">aviso de privacidad</a>.</p>
+        </div>
+        <!-- Barras de progreso y navegación -->
+        <div class="align-center" style="margin:2em 0 1em 0;">
+          <ul id="progress-bar" style="display:inline-flex;gap:0.5em;list-style:none;padding:0;">
+            <li class="progress-step active" data-step="1" style="width:16px;height:16px;border-radius:50%;background:#8a4680;opacity:1;cursor:pointer;"></li>
+            <li class="progress-step" data-step="2" style="width:16px;height:16px;border-radius:50%;background:#8a4680;opacity:0.3;cursor:pointer;"></li>
+            <li class="progress-step" data-step="3" style="width:16px;height:16px;border-radius:50%;background:#8a4680;opacity:0.3;cursor:pointer;"></li>
+          </ul>
+        </div>
+        <div class="align-center">
+          <button type="button" id="prev-btn" class="button small" style="display:none;margin-right:1em;">Atrás</button>
+          <button type="button" id="next-btn" class="button small">Siguiente</button>
+        </div>
       </form>
     </div>
   </section>
@@ -89,17 +156,142 @@
   <script src="assets/js/util.js"></script>
   <script src="assets/js/main.js"></script>
   <script>
-    // Mostrar campo de texto si elige 'Otro'
+    // Lógica del formulario dinámico de 3 pasos
     document.addEventListener('DOMContentLoaded', function() {
-      var tipoProyecto = document.getElementById('tipo-proyecto');
-      var otroField = document.getElementById('otro-proyecto-field');
+      let currentStep = 1;
+      const totalSteps = 3;
+      const form = document.getElementById('multi-step-form');
+      const steps = [
+        document.getElementById('form-step-1'),
+        document.getElementById('form-step-2'),
+        document.getElementById('form-step-3')
+      ];
+      const progressSteps = document.querySelectorAll('.progress-step');
+      const nextBtn = document.getElementById('next-btn');
+      const prevBtn = document.getElementById('prev-btn');
+      const ctaBtn = document.getElementById('cta-btn');
+      // Mostrar/ocultar campos de contacto
+      const contactoSelect = document.getElementById('contacto');
+      const fieldEmail = document.getElementById('field-email');
+      const fieldTelefono = document.getElementById('field-telefono');
+      const fieldWhatsapp = document.getElementById('field-whatsapp');
+      function updateContactFields() {
+        const val = contactoSelect.value;
+        fieldEmail.style.display = (val === 'email' || val === 'ambos') ? 'block' : 'none';
+        fieldTelefono.style.display = (val === 'telefono' || val === 'ambos') ? 'block' : 'none';
+        fieldWhatsapp.style.display = (val === 'whatsapp') ? 'block' : 'none';
+        // Limpiar valores si se ocultan
+        if (fieldEmail.style.display === 'none') document.getElementById('email').value = '';
+        if (fieldTelefono.style.display === 'none') document.getElementById('telefono').value = '';
+        if (fieldWhatsapp.style.display === 'none') document.getElementById('whatsapp').value = '';
+      }
+      contactoSelect.addEventListener('change', updateContactFields);
+      // Mostrar campo 'otro' en tipo de proyecto
+      const tipoProyecto = document.getElementById('tipo-proyecto');
+      const otroField = document.getElementById('otro-proyecto-field');
       tipoProyecto.addEventListener('change', function() {
         if (this.value === 'otro') {
           otroField.style.display = 'block';
         } else {
           otroField.style.display = 'none';
+          document.getElementById('otro-proyecto').value = '';
         }
       });
+      // Navegación entre pasos
+      function showStep(step) {
+        steps.forEach((s, i) => s.style.display = (i === step-1) ? 'block' : 'none');
+        progressSteps.forEach((p, i) => {
+          p.classList.toggle('active', i === step-1);
+          p.style.opacity = (i === step-1) ? '1' : '0.3';
+        });
+        prevBtn.style.display = (step > 1) ? 'inline-block' : 'none';
+        nextBtn.style.display = (step < totalSteps) ? 'inline-block' : 'none';
+      }
+      function validateStep(step) {
+        if (step === 1) {
+          const nombre = document.getElementById('nombre').value.trim();
+          const contacto = contactoSelect.value;
+          if (!nombre || !contacto) return false;
+          if ((contacto === 'email' || contacto === 'ambos') && !document.getElementById('email').value.trim()) return false;
+          if ((contacto === 'telefono' || contacto === 'ambos') && !document.getElementById('telefono').value.trim()) return false;
+          if (contacto === 'whatsapp' && !document.getElementById('whatsapp').value.trim()) return false;
+          return true;
+        }
+        if (step === 2) {
+          if (!document.getElementById('detalles').value.trim()) return false;
+          if (!tipoProyecto.value) return false;
+          if (tipoProyecto.value === 'otro' && !document.getElementById('otro-proyecto').value.trim()) return false;
+          if (!document.getElementById('plazo').value) return false;
+          if (!document.getElementById('moneda').value) return false;
+          if (!document.getElementById('presupuesto').value.trim()) return false;
+          return true;
+        }
+        return true;
+      }
+      nextBtn.addEventListener('click', function() {
+        if (validateStep(currentStep)) {
+          if (currentStep < totalSteps) {
+            currentStep++;
+            showStep(currentStep);
+            if (currentStep === 3) fillSummary();
+          }
+        } else {
+          alert('Por favor completa todos los campos requeridos.');
+        }
+      });
+      prevBtn.addEventListener('click', function() {
+        if (currentStep > 1) {
+          currentStep--;
+          showStep(currentStep);
+        }
+      });
+      // Barras de progreso clickeables
+      progressSteps.forEach((p, i) => {
+        p.addEventListener('click', function() {
+          if (i < currentStep-1 || validateStep(currentStep)) {
+            if (i+1 < currentStep || validateStep(currentStep)) {
+              currentStep = i+1;
+              showStep(currentStep);
+              if (currentStep === 3) fillSummary();
+            }
+          } else {
+            alert('Por favor completa todos los campos requeridos antes de avanzar.');
+          }
+        });
+      });
+      // Resumen y CTA dinámico
+      function fillSummary() {
+        const nombre = document.getElementById('nombre').value;
+        const contacto = contactoSelect.value;
+        let contactoStr = '';
+        if (contacto === 'email') contactoStr = 'Correo electrónico: ' + document.getElementById('email').value;
+        if (contacto === 'telefono') contactoStr = 'Teléfono: ' + document.getElementById('telefono').value;
+        if (contacto === 'ambos') contactoStr = 'Correo: ' + document.getElementById('email').value + ', Teléfono: ' + document.getElementById('telefono').value;
+        if (contacto === 'whatsapp') contactoStr = 'WhatsApp: ' + document.getElementById('whatsapp').value;
+        const detalles = document.getElementById('detalles').value;
+        const tipoProyectoVal = tipoProyecto.value === 'otro' ? document.getElementById('otro-proyecto').value : tipoProyecto.options[tipoProyecto.selectedIndex].text;
+        const plazo = document.getElementById('plazo').value;
+        const moneda = document.getElementById('moneda').value;
+        const presupuesto = document.getElementById('presupuesto').value;
+        const referencias = document.getElementById('referencias').value;
+        let resumen = `<strong>Nombre:</strong> ${nombre}<br><strong>Contacto:</strong> ${contactoStr}<br><strong>Tipo de proyecto:</strong> ${tipoProyectoVal}<br><strong>Detalles:</strong> ${detalles}<br><strong>Plazo:</strong> ${plazo}<br><strong>Presupuesto:</strong> ${presupuesto} ${moneda}<br><strong>Referencias:</strong> ${referencias}`;
+        document.getElementById('resumen-formulario').innerHTML = resumen;
+        // CTA dinámico
+        let cta = 'Solicitar cotización gratuita';
+        if (tipoProyecto.value === 'ecommerce' || tipoProyecto.value === 'web-corporativa') cta = 'Comenzar mi proyecto ahora';
+        if (presupuesto && parseInt(presupuesto) > 2000 && moneda === 'USD') cta = '¡Hablemos de tu gran proyecto!';
+        document.getElementById('cta-btn').textContent = cta;
+      }
+      // Validación final
+      form.addEventListener('submit', function(e) {
+        if (!validateStep(3)) {
+          e.preventDefault();
+          alert('Por favor completa todos los campos requeridos.');
+        }
+      });
+      // Inicializar
+      showStep(currentStep);
+      updateContactFields();
     });
   </script>
 </body>
