@@ -69,6 +69,7 @@
               <select name="tipo-proyecto" id="tipo-proyecto" style="color:rgba(0,0,0,0.5);" required>
                 <option value="" disabled selected>Selecciona una opción</option>
                 <option value="web-corporativa">Sitio web corporativo</option>
+                <option value="personal">Sitio web personal</option>
                 <option value="ecommerce">Tienda en línea (E-commerce)</option>
                 <option value="landing-page">Landing Page</option>
                 <option value="blog">Blog o portal de noticias</option>
@@ -102,8 +103,8 @@
               <small style="color:rgba(0,0,0,0.4);">Tipo de cambio fijo: 1 USD = 20 MXN</small>
             </div>
             <div class="field">
-              <label for="referencias">Referencias (nombres de marcas, no URLs)</label>
-              <input type="text" name="referencias" id="referencias" pattern="^[^\s]*$|^[^\s]+( [^\s]+)*$" placeholder="Ejemplo: Coca-Cola, Nike, Apple" style="color:rgba(0,0,0,0.5);">
+              <label for="referencias">Sitio de la marca que te inspira</label>
+              <input type="text" name="referencias" id="referencias" placeholder="Ejemplo: Coca-Cola, Nike, Apple" style="color:rgba(0,0,0,0.5);">
             </div>
           </div>
         </div>
@@ -212,7 +213,11 @@
           const nombre = document.getElementById('nombre').value.trim();
           const contacto = contactoSelect.value;
           if (!nombre || !contacto) return false;
-          if ((contacto === 'email' || contacto === 'ambos') && !document.getElementById('email').value.trim()) return false;
+          if ((contacto === 'email' || contacto === 'ambos')) {
+            const email = document.getElementById('email').value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email || !emailRegex.test(email)) return false;
+          }
           if ((contacto === 'telefono' || contacto === 'ambos') && !document.getElementById('telefono').value.trim()) return false;
           if (contacto === 'whatsapp' && !document.getElementById('whatsapp').value.trim()) return false;
           return true;
@@ -224,6 +229,7 @@
           if (!document.getElementById('plazo').value) return false;
           if (!document.getElementById('moneda').value) return false;
           if (!document.getElementById('presupuesto').value.trim()) return false;
+          // Referencias ya no es obligatorio
           return true;
         }
         return true;
