@@ -4417,3 +4417,35 @@
   min-height: 180px;
   font-size: 1.15em;
 }
+
+.gallery-title {
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+}
+.gallery-link {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+}
+.gallery-link:visited {
+  color: inherit;
+}
+.gallery-link:hover {
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+.gallery .image.fit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.gallery .image.fit img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.gallery-title {
+  text-align: center;
+}
