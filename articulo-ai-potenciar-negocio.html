@@ -1,6 +1,25 @@
 <!DOCTYPE HTML>
 <html><head><title>Cómo potenciar tu negocio con AI | ONE Elevate Digital</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="assets/css/main.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></head><body>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+  #menu .has-submenu > a { cursor: pointer; }
+  #menu .submenu {
+    background: #fff;
+    padding-left: 1em;
+    border-left: 2px solid #8a4680;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+  #menu .submenu li a {
+    color: #8a4680;
+    font-size: 0.95em;
+    padding: 0.3em 0;
+    display: block;
+  }
+  #menu .submenu li a:hover {
+    text-decoration: underline;
+  }
+</style></head><body>
 
 <!-- Header -->
 <header id="header" class="alt"><div class="logo"><a href="index.html">ONE Elevate <span>by Pinha's AI Solutions</span></a></div>
@@ -10,6 +29,15 @@
 <nav id="menu"><ul class="links"><li><a href="index.html">Home</a></li>
 <li><a href="mantenimiento.html">Portafolio</a></li>
 <li><a href="generic.html">Sobre nosotros</a></li>
+<li class="has-submenu"><a href="#" id="servicios-toggle">NUESTROS SERVICIOS <i class="fa fa-caret-down"></i></a>
+  <ul class="submenu" id="servicios-submenu" style="display:none;">
+    <li><a href="mantenimiento.html">DESARROLLO DE SOFTWARE</a></li>
+    <li><a href="mantenimiento.html">DISEÑO</a></li>
+    <li><a href="mantenimiento.html">MARKETING SOLUTIONS</a></li>
+    <li><a href="mantenimiento.html">CIBERSEGURIDAD</a></li>
+    <li><a href="mantenimiento.html">CAPACITACIONES TECH</a></li>
+  </ul>
+</li>
 </ul></nav>
 <!-- Banner -->
 <section class="banner full"><article><img src="images/pic04.jpg" alt="Potenciar tu negocio con AI" width="1440" height="961"><div class="inner">
@@ -58,4 +86,20 @@ Made by <a href="index.html">ONE Elevate Digital</a>.
 </div>
 <!-- Scripts -->
 <script src="assets/js/jquery.min.js"></script><script src="assets/js/jquery.scrollex.min.js"></script><script src="assets/js/skel.min.js"></script><script src="assets/js/util.js"></script><script src="assets/js/main.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var toggle = document.getElementById('servicios-toggle');
+    var submenu = document.getElementById('servicios-submenu');
+    if(toggle && submenu) {
+      toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        if(submenu.style.display === 'none' || submenu.style.display === '') {
+          submenu.style.display = 'block';
+        } else {
+          submenu.style.display = 'none';
+        }
+      });
+    }
+  });
+</script>
 </body></html> 

@@ -3985,6 +3985,53 @@
 			visibility: visible;
 		}
 
+		/* ---------- SUB-MENÚ DENTRO DE “NUESTROS SERVICIOS” ---------- */
+
+/* Contenedor del sub-menú */
+#menu ul.links li ul {
+    /* 1. Quitamos fondo blanco y márgenes */
+    background: transparent;
+    margin: 0;
+    padding: 0 0 0 1.75rem;     /* mismo sangrado que resto del menú */
+    list-style: none;           /* ocultamos viñeta nativa; ponemos propia */
+}
+
+/* Ítems del sub-menú */
+#menu ul.links li ul li {
+    position: relative;
+    border-top: solid 1px rgba(255,255,255,.125); /* misma línea divisora */
+}
+
+/* Viñeta personalizada ─ círculo púrpura */
+#menu ul.links li ul li::before{
+    content:'';
+    position:absolute;
+    left:-1.15rem;              /* alinea con el texto principal */
+    top:50%;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:#8a4680;         /* tu color primario */
+    transform:translateY(-50%);
+}
+
+/* Enlaces del sub-menú */
+#menu ul.links li ul li a{
+    display:block;
+    line-height:3.5rem;         /* copia del principal */
+    font-family:"Poppins",sans-serif;
+    font-size:0.85rem;          /* ligeramente más pequeño */
+    text-transform:uppercase;
+    color:rgba(255,255,255,.5); /* mismo gris que los demás */
+    text-decoration:none;       /* ← sin subrayado */
+}
+
+/* Hover igual que los enlaces de primer nivel */
+#menu ul.links li ul li a:hover{
+    color:#fff;
+}
+
+
 		@media screen and (max-width: 736px) {
 
 			#menu {
@@ -4449,3 +4496,4 @@
 .gallery-title {
   text-align: center;
 }
+
