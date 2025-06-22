@@ -6,6 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    #menu .has-submenu > a { cursor: pointer; }
+    #menu .submenu {
+      background: #fff;
+      padding-left: 1em;
+      border-left: 2px solid #8a4680;
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+    }
+    #menu .submenu li a {
+      color: #8a4680;
+      font-size: 0.95em;
+      padding: 0.3em 0;
+      display: block;
+    }
+    #menu .submenu li a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
   <!-- Header -->
@@ -18,11 +37,11 @@
       <li><a href="generic.html">Sobre nosotros</a></li>
       <li class="has-submenu"><a href="#" id="servicios-toggle">NUESTROS SERVICIOS <i class="fa fa-caret-down"></i></a>
         <ul class="submenu" id="servicios-submenu" style="display:none;">
-          <li><a href="mantenimiento.html">DESARROLLO DE SOFTWARE</a></li>
-          <li><a href="mantenimiento.html">DISEÑO</a></li>
-          <li><a href="mantenimiento.html">MARKETING SOLUTIONS</a></li>
-          <li><a href="mantenimiento.html">CIBERSEGURIDAD</a></li>
-          <li><a href="mantenimiento.html">CAPACITACIONES TECH</a></li>
+          <li><a href="#">DESARROLLO DE SOFTWARE</a></li>
+          <li><a href="#">DISEÑO</a></li>
+          <li><a href="#">MARKETING SOLUTIONS</a></li>
+          <li><a href="#">CIBERSEGURIDAD</a></li>
+          <li><a href="#">CAPACITACIONES TECH</a></li>
         </ul>
       </li>
     </ul></nav>
