@@ -392,7 +392,12 @@ var settings = {
 				</form>
 			</div>
 		`);
-		$('body').append(chatBtn, chatWidget);
+               $('body').append(chatBtn, chatWidget);
+
+               // Variables de estado para recopilar datos de contacto y valoración
+               let awaitingContactMethod = false;
+               let awaitingContactInfo = false;
+               let awaitingContactPermission = false;
 
 		// Mostrar/ocultar el chat
 		chatBtn.on('click', function() {
@@ -406,19 +411,30 @@ var settings = {
 		});
 
 		// Mensaje de bienvenida y opciones iniciales
-		function aiWelcome() {
-			aiAddMessage('assistant', '¡Hola! Soy tu asistente AI de ONE Elevate Digital. ¿En qué puedo ayudarte hoy? Elige una opción o escribe tu pregunta:', [
-				'Ver servicios',
-				'Cotización personalizada',
-				'Hablar con un asesor',
-				'Consejos de AI para mi negocio'
-			]);
-		}
+                function aiWelcome() {
+                        aiAddMessage('assistant', '¡Hola! Soy tu asistente AI de ONE Elevate Digital. ¿En qué puedo ayudarte hoy? Elige una opción o escribe tu pregunta:', [
+                                'Ver servicios',
+                                'Cotización personalizada',
+                                'Hablar con un asesor',
+                                'Consejos de AI para mi negocio'
+                        ]);
+                }
+
+                // Mostrar opciones para valorar la interacción
+                function aiShowRating() {
+                        const $rating = $('<div id="ai-rating" class="ai-rating"><p>¿Qué tan útil fue esta interacción?</p><div class="ai-stars"></div></div>');
+                        for (let i = 1; i <= 5; i++) {
+                                $('<i class="fa fa-star-o" data-rate="' + i + '"></i>').appendTo($rating.find('.ai-stars'));
+                        }
+                        const $msg = $('<div>').addClass('ai-msg').addClass('ai-assistant').append($rating);
+                        $('#ai-chat-messages').append($msg);
+                        $('#ai-chat-messages').scrollTop($('#ai-chat-messages')[0].scrollHeight);
+                }
 
 		// Agregar mensaje al chat
 		function aiAddMessage(sender, text, options) {
 			const $msg = $('<div>').addClass('ai-msg').addClass(sender === 'user' ? 'ai-user' : 'ai-assistant');
-			$msg.append($('<div>').addClass('ai-msg-text').text(text));
+                       $msg.append($('<div>').addClass('ai-msg-text').html(text));
 			if (options && Array.isArray(options)) {
 				const $opts = $('<div>').addClass('ai-msg-options');
 				options.forEach(opt => {
@@ -431,32 +447,69 @@ var settings = {
 		}
 
 		// Analizar input del usuario y responder
-		function aiAnalyzeInput(input) {
-			input = input.trim().toLowerCase();
-			if (input.includes('servicio')) {
-				aiAddMessage('assistant', 'Ofrecemos diseño web, marketing digital, integración de AI y más. ¿Te gustaría saber más de algún servicio en particular?', [
-					'Diseño web', 'Marketing digital', 'Integración AI', 'Otro'
-				]);
-			} else if (input.includes('cotiz')) {
-				aiAddMessage('assistant', '¡Perfecto! ¿Qué tipo de proyecto te interesa cotizar?', [
-					'Sitio web', 'Tienda en línea', 'Automatización AI', 'Otro'
-				]);
-			} else if (input.includes('asesor')) {
-				aiAddMessage('assistant', 'Un asesor humano te contactará pronto. ¿Prefieres WhatsApp o Email?', [
-					'WhatsApp', 'Email'
-				]);
-			} else if (input.includes('ai') || input.includes('inteligencia')) {
+                function aiAnalyzeInput(input) {
+                        input = input.trim().toLowerCase();
+
+                        if (awaitingContactInfo) {
+                                aiAddMessage('assistant', '¡Gracias! Un asesor se pondrá en contacto contigo pronto. Tus datos serán tratados con total confidencialidad. <a href="aviso-privacidad.html" target="_blank">Aviso de privacidad</a>.');
+                                awaitingContactInfo = false;
+                                aiShowRating();
+                                return;
+                        }
+
+                        if (awaitingContactMethod) {
+                                if (input.includes('whatsapp')) {
+                                        aiAddMessage('assistant', 'Por favor, proporciona tu número de WhatsApp. Tus datos serán tratados con total confidencialidad. <a href="aviso-privacidad.html" target="_blank">Aviso de privacidad</a>.');
+                                        awaitingContactMethod = false;
+                                        awaitingContactInfo = true;
+                                        return;
+                                } else if (input.includes('email')) {
+                                        aiAddMessage('assistant', 'Por favor, proporciona tu correo electrónico. Tus datos serán tratados con total confidencialidad. <a href="aviso-privacidad.html" target="_blank">Aviso de privacidad</a>.');
+                                        awaitingContactMethod = false;
+                                        awaitingContactInfo = true;
+                                        return;
+                                }
+                        }
+
+                        if (awaitingContactPermission) {
+                                if (input.startsWith('sí') || input.startsWith('si')) {
+                                        aiAddMessage('assistant', '¿Prefieres WhatsApp o Email?', ['WhatsApp', 'Email']);
+                                        awaitingContactPermission = false;
+                                        awaitingContactMethod = true;
+                                        return;
+                                } else if (input.startsWith('no')) {
+                                        aiAddMessage('assistant', 'Entendido, continuamos disponibles si necesitas más ayuda.');
+                                        awaitingContactPermission = false;
+                                        return;
+                                }
+                        }
+
+                        if (input.includes('servicio')) {
+                                aiAddMessage('assistant', 'Ofrecemos diseño web, marketing digital, integración de AI y más. ¿Te gustaría saber más de algún servicio en particular?', [
+                                        'Diseño web', 'Marketing digital', 'Integración AI', 'Otro'
+                                ]);
+                        } else if (input.includes('cotiz')) {
+                                aiAddMessage('assistant', '¡Perfecto! ¿Qué tipo de proyecto te interesa cotizar?', [
+                                        'Sitio web', 'Tienda en línea', 'Automatización AI', 'Otro'
+                                ]);
+                        } else if (input.includes('asesor')) {
+                                aiAddMessage('assistant', 'Un asesor humano te contactará pronto. ¿Prefieres WhatsApp o Email?', [
+                                        'WhatsApp', 'Email'
+                                ]);
+                                awaitingContactMethod = true;
+                        } else if (input.includes('ai') || input.includes('inteligencia')) {
 				aiAddMessage('assistant', 'La AI puede ayudarte a automatizar tareas, analizar datos y mejorar tus ventas. ¿Te gustaría una recomendación personalizada?', [
 					'Sí, por favor', 'No, gracias'
 				]);
 			} else if (input.length < 3) {
 				aiAddMessage('assistant', '¿Podrías darme más detalles o elegir una opción?');
-			} else {
-				aiAddMessage('assistant', 'Gracias por tu mensaje. Un asesor revisará tu consulta y te responderá pronto. ¿Deseas dejar tus datos de contacto?', [
-					'Sí', 'No'
-				]);
-			}
-		}
+                        } else {
+                                aiAddMessage('assistant', 'Gracias por tu mensaje. Un asesor revisará tu consulta y te responderá pronto. ¿Deseas dejar tus datos de contacto?', [
+                                        'Sí', 'No'
+                                ]);
+                                awaitingContactPermission = true;
+                        }
+                }
 
 		// Enviar mensaje
 		$('#ai-chat-input-area').on('submit', function(e) {
@@ -469,12 +522,24 @@ var settings = {
 		});
 
 		// Click en opciones sugeridas
-		$(document).on('click', '.ai-msg-option', function() {
-			const val = $(this).text();
-			aiAddMessage('user', val);
-			setTimeout(() => aiAnalyzeInput(val), 600);
-			$('#ai-chat-input').val('');
-		});
+                $(document).on('click', '.ai-msg-option', function() {
+                        const val = $(this).text();
+                        aiAddMessage('user', val);
+                        setTimeout(() => aiAnalyzeInput(val), 600);
+                        $('#ai-chat-input').val('');
+                });
+
+                // Registrar valoración por estrellas
+                $(document).on('click', '.ai-stars i', function() {
+                        const rating = $(this).data('rate');
+                        $(this).parent().children('i').each(function() {
+                                const r = $(this).data('rate');
+                                if (r <= rating) $(this).removeClass('fa-star-o').addClass('fa-star');
+                                else $(this).removeClass('fa-star').addClass('fa-star-o');
+                        });
+                        aiAddMessage('assistant', '¡Gracias por tu valoraci\u00f3n de ' + rating + ' estrella' + (rating>1?'s':'') + '!');
+                        $('#ai-rating').remove();
+                });
 
 		// Estilos rápidos para mensajes
 		$('<style>').text(`
@@ -484,8 +549,10 @@ var settings = {
 			.ai-assistant .ai-msg-text { background: #f1e6f3; color: #333; border-radius: 16px 16px 16px 4px; padding: 0.5rem 1rem; display: inline-block; float: left; }
 			.ai-msg-options { margin-top: 0.5rem; clear: both; }
 			.ai-msg-option { background: #fff; border: 1px solid #8a4680; color: #8a4680; border-radius: 8px; margin-right: 0.5rem; margin-bottom: 0.5rem; padding: 0.3rem 1rem; cursor: pointer; transition: background 0.2s, color 0.2s; }
-			.ai-msg-option:hover { background: #8a4680; color: #fff; }
-			.ai-msg:after { content: ''; display: block; clear: both; }
+                        .ai-msg-option:hover { background: #8a4680; color: #fff; }
+                        .ai-msg:after { content: ''; display: block; clear: both; }
+                        .ai-rating { margin-top: 0.5rem; }
+                        .ai-stars i { color: #8a4680; cursor: pointer; margin-right: 0.2rem; }
 		`).appendTo('head');
 
 		// Lanzar mensaje de bienvenida al abrir el chat por primera vez
