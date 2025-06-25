@@ -3923,9 +3923,42 @@
 						margin: 0.5rem 0 0 0;
 					}
 
-					#menu > ul.links > li:first-child > a:not(.button) {
-						border-top: 0 !important;
-					}
+#menu > ul.links > li:first-child > a:not(.button) {
+        border-top: 0 !important;
+}
+
+# menu submenu styles
+#
+# Add hidden submenu styling and open state handling for the
+# "NUESTROS SERVICIOS" section in the side menu.
+#
+# The submenu is hidden by default and displayed when the parent
+# <li> has the class "open".
+
+#menu ul.links li ul.submenu {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding-left: 1rem;
+}
+
+#menu ul.links li.open > ul.submenu {
+    display: block;
+}
+
+#menu ul.links li ul.submenu li > a {
+    border: 0;
+    border-top: solid 1px rgba(255, 255, 255, 0.125);
+    color: rgba(255, 255, 255, 0.5);
+    display: block;
+    line-height: 3rem;
+    text-decoration: none;
+    text-transform: none;
+}
+
+#menu ul.links li ul.submenu li > a:hover {
+    color: #FFF;
+}
 
 		#menu .close {
 			text-decoration: none;

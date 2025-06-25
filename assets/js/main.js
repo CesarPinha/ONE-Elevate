@@ -349,14 +349,20 @@ var settings = {
 			$('#menu')
 				.append('<a href="#menu" class="close"></a>')
 				.appendTo($body)
-				.panel({
-					delay: 500,
-					hideOnClick: true,
-					hideOnSwipe: true,
-					resetScroll: true,
-					resetForms: true,
-					side: 'right'
-				});
+                                .panel({
+                                        delay: 500,
+                                        hideOnClick: true,
+                                        hideOnSwipe: true,
+                                        resetScroll: true,
+                                        resetForms: true,
+                                        side: 'right'
+                                });
+
+               // Toggle submenu for "NUESTROS SERVICIOS"
+               $('.servicios > a').on('click', function(e) {
+                       e.preventDefault();
+                       $(this).parent().toggleClass('open');
+               });
 
 		// Header.
 			if (skel.vars.IEVersion < 9)
