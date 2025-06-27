@@ -7,7 +7,7 @@ var settings = {
 
 		// Transition speed (in ms)
 		// For timing purposes only. It *must* match the transition speed of "#banner > article".
-			speed: 1500,
+			speed: 500,
 
 		// Transition delay (in ms)
 			delay: 5000,
@@ -545,14 +545,14 @@ var settings = {
 		$('<style>').text(`
 			#ai-chat-messages { font-family: Poppins, sans-serif; }
 			.ai-msg { margin-bottom: 1rem; }
-			.ai-user .ai-msg-text { background: #8a4680; color: #fff; border-radius: 16px 16px 4px 16px; padding: 0.5rem 1rem; display: inline-block; float: right; }
+			.ai-user .ai-msg-text { background: #F0F2F5; color: #fff; border-radius: 16px 16px 4px 16px; padding: 0.5rem 1rem; display: inline-block; float: right; }
 			.ai-assistant .ai-msg-text { background: #f1e6f3; color: #333; border-radius: 16px 16px 16px 4px; padding: 0.5rem 1rem; display: inline-block; float: left; }
 			.ai-msg-options { margin-top: 0.5rem; clear: both; }
-			.ai-msg-option { background: #fff; border: 1px solid #8a4680; color: #8a4680; border-radius: 8px; margin-right: 0.5rem; margin-bottom: 0.5rem; padding: 0.3rem 1rem; cursor: pointer; transition: background 0.2s, color 0.2s; }
-                        .ai-msg-option:hover { background: #8a4680; color: #fff; }
+			.ai-msg-option { background: #fff; border: 1px solid #F0F2F5; color: #F0F2F5; border-radius: 8px; margin-right: 0.5rem; margin-bottom: 0.5rem; padding: 0.3rem 1rem; cursor: pointer; transition: background 0.2s, color 0.2s; }
+                        .ai-msg-option:hover { background: #F0F2F5; color: #fff; }
                         .ai-msg:after { content: ''; display: block; clear: both; }
                         .ai-rating { margin-top: 0.5rem; }
-                        .ai-stars i { color: #8a4680; cursor: pointer; margin-right: 0.2rem; }
+                        .ai-stars i { color: #F0F2F5; cursor: pointer; margin-right: 0.2rem; }
 		`).appendTo('head');
 
 		// Lanzar mensaje de bienvenida al abrir el chat por primera vez
