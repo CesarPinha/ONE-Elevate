@@ -4385,7 +4385,7 @@
   transition: background 0.2s;
 }
 #ai-float-btn:hover {
-  background: #9b4f90;
+  background: #9da3af;
 }
 
 /* Ventana de chat flotante */
@@ -4428,7 +4428,7 @@
   flex: 1;
   padding: 1rem;
   overflow-y: auto;
-  background: #f9f6fa;
+  background: #9da3af;
 }
 #ai-chat-input-area {
   display: flex;
