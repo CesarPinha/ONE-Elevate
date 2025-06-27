@@ -2045,7 +2045,7 @@
 			input[type="button"].special:hover,
 			button.special:hover,
 			.button.special:hover {
-				background-color: #9b4f90;
+				background-color: #393D42;
 			}
 
 			input[type="submit"].special:active,
@@ -2981,7 +2981,7 @@
 					.wrapper.style2 input[type="button"].special:hover,
 					.wrapper.style2 button.special:hover,
 					.wrapper.style2 .button.special:hover {
-						background-color: #9b4f90;
+						background-color: #393D42;
 					}
 
 					.wrapper.style2 input[type="submit"].special:active,
@@ -3210,7 +3210,7 @@
 					.wrapper.style3 input[type="button"].special:hover,
 					.wrapper.style3 button.special:hover,
 					.wrapper.style3 .button.special:hover {
-						background-color: #9b4f90;
+						background-color: #393D42;
 					}
 
 					.wrapper.style3 input[type="submit"].special:active,
@@ -4453,7 +4453,7 @@
   transition: background 0.2s;
 }
 #ai-chat-send:hover {
-  background: #9b4f90;
+  background: #393D42;
 }
 
 /* Ajustes para crear-proyecto.html */
