@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html><head><title>Descubre cómo funciona la AI por detrás | ONE Elevate Digital</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="assets/css/main.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="assets/css/theme.css">
 <style>
   #menu .has-submenu > a { cursor: pointer; }
   #menu .submenu {
@@ -23,7 +24,7 @@
 
 <!-- Header -->
 <header id="header" class="alt"><div class="logo"><a href="index.html">ONE Elevate <span>by Pinha's AI Solutions</span></a></div>
-<a href="#menu">Menu</a>
+<a href="#menu">Menu</a><a href="#" id="theme-toggle"><i class="fa fa-moon-o"></i></a>
 </header>
 <!-- Nav -->
 <nav id="menu"><ul class="links"><li><a href="index.html">Home</a></li>
@@ -99,4 +100,27 @@
     }
   });
 </script>
-</body></html> 
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var themeToggle = document.getElementById("theme-toggle");
+    if(themeToggle) {
+      if(localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark-mode");
+        themeToggle.innerHTML = '<i class="fa fa-sun-o"></i>';
+      }
+      themeToggle.addEventListener("click", function(e) {
+        e.preventDefault();
+        document.body.classList.toggle("dark-mode");
+        if(document.body.classList.contains("dark-mode")) {
+          themeToggle.innerHTML = '<i class="fa fa-sun-o"></i>';
+          localStorage.setItem("theme", "dark");
+        } else {
+          themeToggle.innerHTML = '<i class="fa fa-moon-o"></i>';
+          localStorage.setItem("theme", "light");
+        }
+      });
+    }
+  });
+</script>
+</body>
+</html> 

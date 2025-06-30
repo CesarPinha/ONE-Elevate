@@ -1,0 +1,20 @@
+#theme-toggle {
+  cursor: pointer;
+}
+
+body.dark-mode {
+  background-color: #000;
+  color: #fff;
+}
+
+body.dark-mode a {
+  color: #fff;
+}
+
+body.dark-mode .wrapper,
+body.dark-mode .wrapper.style1,
+body.dark-mode .wrapper.style2,
+body.dark-mode .wrapper.style3 {
+  background-color: #000;
+  color: #fff;
+}
