@@ -1,52 +1,16 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="es">
 <head>
-  <title>Crear Proyecto | ONE Elevate Digital</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="assets/css/main.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <style>
-    #menu .has-submenu > a { cursor: pointer; }
-    #menu .submenu {
-      background: #fff;
-      padding-left: 1em;
-      border-left: 2px solid #F0F2F5;
-      margin-top: 0.5em;
-      margin-bottom: 0.5em;
-    }
-    #menu .submenu li a {
-      color: #F0F2F5;
-      font-size: 0.95em;
-      padding: 0.3em 0;
-      display: block;
-    }
-    #menu .submenu li a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  <title>Crear Proyecto | ONE Elevate Digital</title>
+  <meta name="description" content="Cuéntanos tu idea y recibe una cotización personalizada para tu proyecto web en 3 sencillos pasos.">
+  <script src="assets/js/head.js"></script>
 </head>
 <body>
-  <!-- Header -->
-  <header id="header" class="logo"><div class="logo"><a href="index.html">ONE Elevate <span>by Pinha's AI Solutions</span></a></div>
-    <a href="#menu">Menu</a>
-  </header>
-  <!-- Nav -->
-  <nav id="menu"><ul class="links"><li><a href="index.html">Home</a></li>
-      <li><a href="mantenimiento.html">Portafolio</a></li>
-      <li><a href="generic.html">Sobre nosotros</a></li>
-      <li class="has-submenu"><a href="#" id="servicios-toggle">NUESTROS SERVICIOS <i class="fa fa-caret-down"></i></a>
-        <ul class="submenu" id="servicios-submenu" style="display:none;">
-          <li><a href="#">DESARROLLO DE SOFTWARE</a></li>
-          <li><a href="#">DISEÑO</a></li>
-          <li><a href="#">MARKETING SOLUTIONS</a></li>
-          <li><a href="#">CIBERSEGURIDAD</a></li>
-          <li><a href="#">CAPACITACIONES TECH</a></li>
-        </ul>
-      </li>
-    </ul></nav>
+  <div id="site-header"></div>
   <section class="wrapper style2">
     <div class="inner">
+      <article>
       <header class="align-center">
         <h2>Contáctanos en 3 sencillos pasos</h2>
         <p>Completa el formulario y recibe una cotización personalizada</p>
@@ -147,14 +111,14 @@
           <div class="field align-center">
             <button type="submit" id="cta-btn" class="button alt">Solicitar cotización gratuita</button>
           </div>
-          <p style="font-size:0.9em;color:rgba(0,0,0,0.5);margin-top:1em;">Tus datos serán tratados con total confidencialidad. Consulta nuestro <a href="aviso-privacidad.html" style="color:#F0F2F5;">aviso de privacidad</a>.</p>
+          <p style="font-size:0.9em;color:rgba(0,0,0,0.5);margin-top:1em;">Tus datos serán tratados con total confidencialidad. Consulta nuestro <a href="aviso-privacidad.html" style="color:#393D42;">aviso de privacidad</a>.</p>
         </div>
         <!-- Barras de progreso y navegación -->
         <div class="align-center" style="margin:2em 0 1em 0;">
           <ul id="progress-bar" style="display:inline-flex;gap:0.5em;list-style:none;padding:0;">
-            <li class="progress-step active" data-step="1" style="width:16px;height:16px;border-radius:50%;background:#F0F2F5;opacity:1;cursor:pointer;"></li>
-            <li class="progress-step" data-step="2" style="width:16px;height:16px;border-radius:50%;background:#F0F2F5;opacity:0.3;cursor:pointer;"></li>
-            <li class="progress-step" data-step="3" style="width:16px;height:16px;border-radius:50%;background:#F0F2F5;opacity:0.3;cursor:pointer;"></li>
+            <li class="progress-step active" data-step="1" style="width:16px;height:16px;border-radius:50%;background:#393D42;opacity:1;cursor:pointer;"></li>
+            <li class="progress-step" data-step="2" style="width:16px;height:16px;border-radius:50%;background:#393D42;opacity:0.3;cursor:pointer;"></li>
+            <li class="progress-step" data-step="3" style="width:16px;height:16px;border-radius:50%;background:#393D42;opacity:0.3;cursor:pointer;"></li>
           </ul>
         </div>
         <div class="align-center">
@@ -162,26 +126,11 @@
           <button type="button" id="next-btn" class="button small">Siguiente</button>
         </div>
       </form>
+      </article>
     </div>
   </section>
-  <!-- Footer -->
-  <footer id="footer">
-    <div class="container">
-      <ul class="icons">
-        <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-        <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-        <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-        <li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
-      </ul>
-      <p class="copyright">Made by <a href="index.html">ONE Elevate Digital</a>.</p>
-    </div>
-  </footer>
+  <div id="site-footer"></div>
   <!-- Scripts -->
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/jquery.scrollex.min.js"></script>
-  <script src="assets/js/skel.min.js"></script>
-  <script src="assets/js/util.js"></script>
-  <script src="assets/js/main.js"></script>
   <script>
     // Lógica del formulario dinámico de 3 pasos
     document.addEventListener('DOMContentLoaded', function() {
@@ -325,20 +274,7 @@
       showStep(currentStep);
       updateContactFields();
     });
-    document.addEventListener('DOMContentLoaded', function() {
-      var toggle = document.getElementById('servicios-toggle');
-      var submenu = document.getElementById('servicios-submenu');
-      if(toggle && submenu) {
-        toggle.addEventListener('click', function(e) {
-          e.preventDefault();
-          if(submenu.style.display === 'none' || submenu.style.display === '') {
-            submenu.style.display = 'block';
-          } else {
-            submenu.style.display = 'none';
-          }
-        });
-      }
-    });
   </script>
+  <script src="assets/js/layout.js"></script>
 </body>
 </html> 

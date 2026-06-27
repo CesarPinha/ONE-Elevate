@@ -378,17 +378,17 @@ var settings = {
 
 		// --- AI Chat Floating Button & Widget ---
 		// Agregar el botón flotante y el widget de chat al body
-		const chatBtn = $('<button id="ai-float-btn" title="¿Necesitas ayuda?"><i class="fa fa-comments"></i></button>');
+		const chatBtn = $('<button id="ai-float-btn" type="button" title="¿Necesitas ayuda?" aria-label="Abrir asistente de ayuda"><i class="fa fa-comments" aria-hidden="true"></i></button>');
 		const chatWidget = $(`
-			<div id="ai-chat-widget">
+			<div id="ai-chat-widget" role="dialog" aria-label="Asistente AI">
 				<div id="ai-chat-header">
 					<span>Asistente AI</span>
-					<button id="ai-chat-close" title="Cerrar">&times;</button>
+					<button id="ai-chat-close" type="button" title="Cerrar" aria-label="Cerrar asistente">&times;</button>
 				</div>
-				<div id="ai-chat-messages"></div>
+				<div id="ai-chat-messages" role="log" aria-live="polite" aria-label="Mensajes del chat"></div>
 				<form id="ai-chat-input-area" autocomplete="off">
-					<input id="ai-chat-input" type="text" placeholder="Escribe tu mensaje..." autocomplete="off" />
-					<button id="ai-chat-send" type="submit"><i class="fa fa-paper-plane"></i></button>
+					<input id="ai-chat-input" type="text" placeholder="Escribe tu mensaje..." aria-label="Escribe tu mensaje" autocomplete="off" />
+					<button id="ai-chat-send" type="submit" aria-label="Enviar mensaje"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
 				</form>
 			</div>
 		`);
@@ -541,19 +541,8 @@ var settings = {
                         $('#ai-rating').remove();
                 });
 
-		// Estilos rápidos para mensajes
-		$('<style>').text(`
-			#ai-chat-messages { font-family: Poppins, sans-serif; }
-			.ai-msg { margin-bottom: 1rem; }
-			.ai-user .ai-msg-text { background: #F0F2F5; color: #fff; border-radius: 16px 16px 4px 16px; padding: 0.5rem 1rem; display: inline-block; float: right; }
-			.ai-assistant .ai-msg-text { background: #f1e6f3; color: #333; border-radius: 16px 16px 16px 4px; padding: 0.5rem 1rem; display: inline-block; float: left; }
-			.ai-msg-options { margin-top: 0.5rem; clear: both; }
-			.ai-msg-option { background: #fff; border: 1px solid #F0F2F5; color: #F0F2F5; border-radius: 8px; margin-right: 0.5rem; margin-bottom: 0.5rem; padding: 0.3rem 1rem; cursor: pointer; transition: background 0.2s, color 0.2s; }
-                        .ai-msg-option:hover { background: #F0F2F5; color: #fff; }
-                        .ai-msg:after { content: ''; display: block; clear: both; }
-                        .ai-rating { margin-top: 0.5rem; }
-                        .ai-stars i { color: #F0F2F5; cursor: pointer; margin-right: 0.2rem; }
-		`).appendTo('head');
+		// Los estilos del chat (burbujas, opciones, valoración) viven en
+		// assets/css/main.css junto al resto de estilos del chat flotante.
 
 		// Lanzar mensaje de bienvenida al abrir el chat por primera vez
 		let aiChatWelcomed = false;

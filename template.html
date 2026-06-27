@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<!--
+  PLANTILLA PARA PÁGINAS NUEVAS — ONE Elevate Digital
+  Copia este archivo, renómbralo (p. ej. nueva-pagina.html) y edita:
+    1. El <title>.
+    2. El contenido entre <div id="site-header"></div> y <div id="site-footer"></div>.
+
+  Todo lo común se inyecta automáticamente desde una sola fuente de verdad:
+    - <head> común (meta + CSS): assets/js/head.js
+    - header + nav + footer + scripts: assets/js/layout.js
+  Así, cambiar un enlace de redes, el menú o un estilo global se hace en UN solo
+  archivo y se refleja en todas las páginas.
+-->
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Nueva página | ONE Elevate Digital</title>
+  <script src="assets/js/head.js"></script>
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <!-- Encabezado de la página (banda de color) -->
+  <section class="wrapper style3"><div class="inner">
+    <header class="align-center"><p>Subtítulo o sección</p>
+      <h2>Título de la página</h2>
+    </header>
+  </div></section>
+
+  <!-- Cuerpo principal (tarjetas .box sobre fondo claro) -->
+  <section class="wrapper style2"><div class="inner">
+    <div class="box">
+      <div class="content">
+        <header class="align-center"><p>Antetítulo</p>
+          <h2>Título de la tarjeta</h2>
+        </header>
+        <p>Escribe aquí el contenido de la página. Repite bloques
+          <code>&lt;div class="box"&gt;&lt;div class="content"&gt;…&lt;/div&gt;&lt;/div&gt;</code>
+          para añadir más tarjetas.</p>
+        <footer class="align-center"><a href="crear-proyecto.html" class="button alt">Crear proyecto</a></footer>
+      </div>
+    </div>
+  </div></section>
+
+  <div id="site-footer"></div>
+  <script src="assets/js/layout.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+/* Submenú de servicios (NUESTROS SERVICIOS) — fuente única de verdad.
+   Antes estaba duplicado en el <style> inline de cada página. */
+#menu .has-submenu > a { cursor: pointer; }
+#menu .submenu {
+  background: #fff;
+  padding-left: 1em;
+  border-left: 2px solid #F0F2F5;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+#menu .submenu li a {
+  color: #F0F2F5;
+  font-size: 0.95em;
+  padding: 0.3em 0;
+  display: block;
+}
+#menu .submenu li a:hover {
+  text-decoration: underline;
+}
+
+/* Accesibilidad: enlace "Saltar al contenido" (visible solo al enfocar) */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100000;
+  background: #393D42;
+  color: #fff;
+  padding: 0.6em 1em;
+  border-radius: 0 0 6px 0;
+  text-decoration: none;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+/* Accesibilidad: foco visible para navegación por teclado */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid #393D42;
+  outline-offset: 2px;
+}
+
+/* El destino del enlace de salto no necesita recuadro de foco */
+section[tabindex="-1"]:focus {
+  outline: none;
+}

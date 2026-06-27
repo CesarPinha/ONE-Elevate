@@ -1,0 +1,59 @@
+# ==========================================================
+#  Secretos y variables de entorno  (NUNCA subir al repo)
+# ==========================================================
+.env
+.env.*
+*.env
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+credentials
+credentials.*
+secrets
+secrets.*
+*.secret
+*.secrets
+*_secret*
+*-secret*
+*.log
+
+# ==========================================================
+#  Archivos del sistema operativo (macOS / Windows / Linux)
+# ==========================================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.AppleDouble
+.LSOverride
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# ==========================================================
+#  Editores e IDEs
+# ==========================================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+*~
+
+# ==========================================================
+#  Node / herramientas de build (por si se agregan después)
+# ==========================================================
+node_modules/
+dist/
+build/
+.cache/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.npm/
