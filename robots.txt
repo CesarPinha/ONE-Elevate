@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /template.html
+
+Sitemap: https://cesarpinha.github.io/ONE-Elevate/sitemap.xml
